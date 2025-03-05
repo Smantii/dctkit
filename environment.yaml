@@ -5,7 +5,7 @@ channels:
 dependencies:
   - gmsh
   - hyperfine
-  - jax
+  - jax==0.5.0
   - jaxopt
   - numpy
   - pygmo
@@ -22,3 +22,4 @@ dependencies:
   - pip
   - pip:
     - pygmsh
+    - tox-conda
