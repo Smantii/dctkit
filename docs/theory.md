@@ -1,49 +1,51 @@
 # Differential Forms
 
 Differential forms are, in some sense, a generalization of the concept
-of derivative. Referring to [@flanders1963differential], differential
-forms "are the things which occur under integral signs". In this section
-we review formally some well-know concepts of differential geometry, in
-order to define correspondent discrete counterparts in the next section.
+of derivative. Referring to (Flanders 1963), differential forms "are the
+things which occur under integral signs". In this section we review
+formally some well-know concepts of differential geometry, in order to
+define correspondent discrete counterparts in the next section.
 
 Let us fix some notations used in the following sections:
 
--   $\mathcal{E}^n$ is an $n$-dimensional euclidean space.
+- $\mathcal{E}^n$ is an $n$-dimensional euclidean space.
 
--   $\mathcal{V}$ is the $n$-dimensional translation space of
-    $\mathcal{E}^n$ with base $\{\boldsymbol{e}_1, \dots, \boldsymbol{e}_n\}$.
+- $\mathcal{V}$ is the $n$-dimensional translation space of
+  $\mathcal{E}^n$ with base
+  $\{\boldsymbol{e}_1, \dots, \boldsymbol{e}_n\}$.
 
--   $\langle \langle\cdot , \cdot \rangle \rangle: \mathcal{V}\times \mathcal{V}\rightarrow \mathbb{R}$
-    is an inner product, i.e. a symmetric bilinear positive definite
-    function.
+- $\langle \langle\cdot , \cdot \rangle \rangle: \mathcal{V}\times \mathcal{V}\rightarrow \mathbb{R}$
+  is an inner product, i.e. a symmetric bilinear positive definite
+  function.
 
 ## Exterior algebra
 
 ::: refbox
-**References:** {cite}`grady2010discrete`, Section 2.2.1.1.
-[@epstein2010geometrical], Chapter 3. [@crane2018discrete], Section 4.1
+**References:** (Grady and Polimeni 2010), Section 2.2.1.1. (Epstein
+2010), Chapter 3. (Crane 2018), Section 4.1
 :::
 
-From a geometric point of view, citing [@crane2018discrete], if linear
-algebra can be thought as the natural language of "little arrows", then
-exterior algebra is the natural language of "little volumes". For
-instance, $1$-vectors represent lengths and $2$-vectors represent area.
-They encode two basic pieces of information: direction and magnitude.
+From a geometric point of view, citing (Crane 2018), if linear algebra
+can be thought as the natural language of "little arrows", then exterior
+algebra is the natural language of "little volumes". For instance,
+$1$-vectors represent lengths and $2$-vectors represent area. They
+encode two basic pieces of information: direction and magnitude.
 
 The first ingredient to define $p$-vectors is the **exterior product**
 (or wedge product), which is the multiplication operation of the
 *exterior algebra*. In this contest, we do not need the formal
-definition of this algebra, for more details see Chapter 3 of
-[@epstein2010geometrical].
+definition of this algebra, for more details see Chapter 3 of (Epstein
+2010).
 
 Geometrically exterior product provides a way to measure the area of a
 parallelogram defined by a pair of vectors or the volume of a
 parallelepiped produced by a set of vectors in higher dimensions.
 
 ::: defbox
-Given $\boldsymbol{v}_1, \boldsymbol{v}_2 \in \mathcal{V}$ the exterior product
-$\boldsymbol{v}_1 \wedge \boldsymbol{v}_2$ is an anticommutative product on the elements
-of $\mathcal{V}$ and linear in each of its argument.
+Given $\boldsymbol{v}_1, \boldsymbol{v}_2 \in \mathcal{V}$ the exterior
+product $\boldsymbol{v}_1 \wedge \boldsymbol{v}_2$ is an anticommutative
+product on the elements of $\mathcal{V}$ and linear in each of its
+argument.
 :::
 
 In components,
@@ -56,12 +58,12 @@ $$
 **Definition 1**. For $p= 0,\dots, n$ define the set of $p$**-vectors**
 $\bigwedge^p \mathcal{V}$ as follows:
 
--   $\bigwedge^0 \mathcal{V}:= \mathbb{R}, \bigwedge^1 \mathcal{V}:= \mathcal{V}, \bigwedge^n \mathcal{V}:= \mathbb{R}$.
+- $\bigwedge^0 \mathcal{V}:= \mathbb{R}, \bigwedge^1 \mathcal{V}:= \mathcal{V}, \bigwedge^n \mathcal{V}:= \mathbb{R}$.
 
--   For $2 \leq p \leq n-1$, $\bigwedge^p \mathcal{V}$ is the vector
-    space spanned by elements represented as
-    $\boldsymbol{v}_1 \wedge \dots \wedge \boldsymbol{v}_p$, where
-    $\boldsymbol{v}_i \in \mathcal{V}$.
+- For $2 \leq p \leq n-1$, $\bigwedge^p \mathcal{V}$ is the vector space
+  spanned by elements represented as
+  $\boldsymbol{v}_1 \wedge \dots \wedge \boldsymbol{v}_p$, where
+  $\boldsymbol{v}_i \in \mathcal{V}$.
 
 It can be proved that the dimension of $\bigwedge^p \mathcal{V}$ is
 $\binom{n}{p}$. Note that the exterior product between a $p$-vector and
@@ -71,7 +73,10 @@ a $q$-vector can be made and the result is a $(p+q)$-vector.
 ::: Def
 **Definition 2**. We define the **dual space** $\mathcal{V}^*$ of
 $\mathcal{V}$ as
-$$\mathcal{V}^* := \{f: \mathcal{V}\rightarrow \mathbb{R}| \text{ } f \text{ is linear}\}.$$
+
+$$
+\mathcal{V}^* := \{f: \mathcal{V}\rightarrow \mathbb{R}| \text{ } f \text{ is linear}\}.
+$$
 :::
 ::::
 
@@ -86,8 +91,8 @@ elements of this set are called **$p$-forms**.
 ## Manifolds
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.2.1.2.
-[@epstein2010geometrical], Section 4.6
+**References:** (Grady and Polimeni 2010), Section 2.2.1.2. (Epstein
+2010), Section 4.6
 :::
 
 :::: defbox
@@ -98,13 +103,13 @@ exists $U$ neighborhood of $x$ homeomorphic to an open subset of the
 Euclidean space $\mathcal{E}^m$ through $\phi$. The pairs $(U, \phi)$
 are called **charts** and the collection of charts is the **atlas** of
 the manifold. A **differential manifold** is a manifold whose
-homeomorphisms are indeed diffeomorphisms (i.e. they are
+homeomorphisms are indeed diffeomorphisms (i.e. they are
 differentiable).
 :::
 ::::
 
 We will focus on $n$-dimensional **submanifold** of $\mathcal{E}^{m}$,
-i.e. on $n$-dimensional manifold $M \subseteq \mathcal{E}^{m}$. From now
+i.e. on $n$-dimensional manifold $M \subseteq \mathcal{E}^{m}$. From now
 on, we indicate it with $M^n$.
 
 ::: defbox
@@ -154,7 +159,7 @@ vectors and differential operators on differentiable functions near $q$.
 :::: defbox
 ::: Def
 **Definition 6**. A **scalar differential form** is a linear functional
-$\omega: T_x M^n \rightarrow \mathbb{R}$, i.e. any
+$\omega: T_x M^n \rightarrow \mathbb{R}$, i.e. any
 $\omega \in (T_x M^n)^*$. We indicate $(T_x M^n)^*$ as $T^*_x M^n$ and
 we call it **cotangent space**.
 :::
@@ -162,7 +167,7 @@ we call it **cotangent space**.
 
 As before, we can define the **cotangent bundle** $T^* M^n$ of a
 submanifold $M^n$ as the set of *all* scalar differential form on $M^n$,
-i.e. $$T^* M^n = \bigcup_{x \in M^n} T^*_x M^n.$$
+i.e. $$T^* M^n = \bigcup_{x \in M^n} T^*_x M^n.$$
 
 :::: defbox
 ::: Def
@@ -186,13 +191,14 @@ $\bigwedge^p T^*_q M^n$ in $T^*_q M^n$.
 ## Metric Tensor and Musical Isomorphisms
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.2.1.3.
-[@hirani2003discrete], Section 5.2
+**References:** (Grady and Polimeni 2010), Section 2.2.1.3. (Hirani
+2003), Section 5.2
 :::
 
-It is well-known that given $\boldsymbol{v},\boldsymbol{w}\in \mathcal{V}$ and
-$\tilde{\boldsymbol{v}}, \tilde{\boldsymbol{w}} \in \mathbb{R}^n$ their representation
-in components as column vectors
+It is well-known that given
+$\boldsymbol{v},\boldsymbol{w}\in \mathcal{V}$ and
+$\tilde{\boldsymbol{v}}, \tilde{\boldsymbol{w}} \in \mathbb{R}^n$ their
+representation in components as column vectors
 
 $$
 \langle \boldsymbol{v},\boldsymbol{w}\rangle = \tilde{\boldsymbol{v}}^T \boldsymbol{G}
@@ -210,12 +216,13 @@ $\boldsymbol{G}$ is called the **metric tensor**.
 :::
 
 ::: importantbox
-Every vector $\boldsymbol{v}$ in the inner product space $\mathcal{V}$ can be
-associated with a form $\alpha \in \mathcal{V}^*$, which is called the
-**covariant version** of $\boldsymbol{v}$.
+Every vector $\boldsymbol{v}$ in the inner product space $\mathcal{V}$
+can be associated with a form $\alpha \in \mathcal{V}^*$, which is
+called the **covariant version** of $\boldsymbol{v}$.
 
 Vice versa, given a form $\alpha$ we can associate to it a vector
-$\boldsymbol{v}$, which is called the **contravariant version** of $\alpha$.
+$\boldsymbol{v}$, which is called the **contravariant version** of
+$\alpha$.
 :::
 
 These relationships are the so-called **musical isomorphisms**, i.e.
@@ -236,18 +243,22 @@ $$
 \langle \boldsymbol{\alpha}^{\sharp}, \boldsymbol{u}\rangle := \alpha(\boldsymbol{u}),
 $$
 
-for
-any $x \in M$ and $\boldsymbol{u}\in T_x M$
+for any $x \in M$ and $\boldsymbol{u}\in T_x M$
 :::
 ::::
 
 :::: defbox
 ::: Def
 **Definition 9**. Let $M$ be a Riemannian manifold with metric
-$\langle , \rangle$ and let $\boldsymbol{v}\in \mathcal{V}(M)$ be a vector field
-on $M$. The **flat map** $\flat$ from vector fields to $1$-forms is
-defined as $$v^{\flat}(\boldsymbol{u}) := \langle \boldsymbol{v},\boldsymbol{u}\rangle,$$ for
-any $x \in M$ and $\boldsymbol{u}\in T_x M$.
+$\langle , \rangle$ and let $\boldsymbol{v}\in \mathcal{V}(M)$ be a
+vector field on $M$. The **flat map** $\flat$ from vector fields to
+$1$-forms is defined as
+
+$$
+v^{\flat}(\boldsymbol{u}) := \langle \boldsymbol{v},\boldsymbol{u}\rangle,
+$$
+
+for any $x \in M$ and $\boldsymbol{u}\in T_x M$.
 :::
 ::::
 
@@ -257,8 +268,8 @@ should expect.
 ## The Exterior Derivative
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.2.2.1.
-[@epstein2010geometrical], Section 6.3
+**References:** (Grady and Polimeni 2010), Section 2.2.2.1. (Epstein
+2010), Section 6.3
 :::
 
 :::: defbox
@@ -276,23 +287,24 @@ $\alpha, \beta \in \bigwedge^p (T^* M^n)$
 3.  $d(d\alpha) = 0$.
 
 4.  $df$ is the differential of $f$ for any differentiable $0$-form
-    (i.e. scalar function) $f$.
+    (i.e. scalar function) $f$.
 
 A derivative with property 2. is called an **antiderivation**.
 :::
 ::::
 
 ::: importantbox
-Example 2.2 and Example 2.3 of [@grady2010discrete] show how exterior
-derivative is linked with the curl of a scalar field and the divergence
-of a vector field.
+Example 2.2 and Example 2.3 of (Grady and Polimeni 2010) show how
+exterior derivative is linked with the curl of a scalar field and the
+divergence of a vector field.
 :::
 
 It is important to stress the difference between $df$ and $\nabla f$:
 although there is clearly a link between them, the former is a
 *covariant* quantity, whereas the latter is a *contravariant* quantity.
 To highlight their connection, we need a metric tensor, from which we
-obtain $$df(\boldsymbol{v}) = \langle \langle\nabla f, \boldsymbol{v}\rangle \rangle.$$
+obtain
+$$df(\boldsymbol{v}) = \langle \langle\nabla f, \boldsymbol{v}\rangle \rangle.$$
 
 :::: defbox
 ::: Def
@@ -308,13 +320,13 @@ $d \beta = \alpha$.
 ### The Pull-back of a Form
 
 ::: refbox
-**References:** [@epstein2010geometrical], Section 4.13.
-[@frankel2011geometry], Section 2.3b and Section 2.7
+**References:** (Epstein 2010), Section 4.13. (Frankel 2011), Section
+2.3b and Section 2.7
 :::
 
 Let $F: M \rightarrow N$ be a smooth map between manifolds $M$ and $N$
 of dimension respectively $m$ and $n$. We start defining the pull-back
-for smooth functions (i.e. differential $0$-forms).
+for smooth functions (i.e. differential $0$-forms).
 
 :::: defbox
 ::: Def
@@ -339,17 +351,17 @@ where $\boldsymbol{v}_i$ is a vector field on $M$ for every $i$.
 **Theorem 14** (Calculus rules). *Let $\alpha$ and $\beta$ be
 respectively a $p$-form and a $q$-form in $N$.*
 
--   *$F^* (\alpha \wedge \beta) = F^* \alpha \wedge F^*\beta$.*
+- *$F^* (\alpha \wedge \beta) = F^* \alpha \wedge F^*\beta$.*
 
--   *$F* d \alpha = d F^* \alpha$.*
+- *$F* d \alpha = d F^* \alpha$.*
 :::
 ::::
 
 ### Integration
 
 ::: refbox
-**References:** [@flanders1963differential], Section 5.5-5.7.
-[@epstein2010geometrical], Chapter 6. [@frankel2011geometry], Chapter 3
+**References:** (Flanders 1963), Section 5.5-5.7. (Epstein 2010),
+Chapter 6. (Frankel 2011), Chapter 3
 :::
 
 In this section, we want to define $$\int_{\sigma^p} \omega,$$ where
@@ -400,9 +412,9 @@ extended by linearity.
 
 ::: Ex
 **Example 19**. **Line integrals**. Consider a curve
-$\gamma: \boldsymbol{x}= F(t)$, where $a \leq t \leq b$, in $\mathcal{E}^3$,
-oriented such that $d/dt$ defines the positive orientation in
-$\mathbb{R}$. If
+$\gamma: \boldsymbol{x}= F(t)$, where $a \leq t \leq b$, in
+$\mathcal{E}^3$, oriented such that $d/dt$ defines the positive
+orientation in $\mathbb{R}$. If
 $\omega = \omega_1(x) dx^1 + \omega_2(x) dx^2 + \omega_3(x) dx^3$ is a
 $1$-form on $\mathcal{E}^3$, then
 $$\int_\gamma \omega = \int_\gamma \sum_i a_i(x)dx^i = \int^b_a F^*\left[ \sum_i a_i(x) dx^i\right] = \int_a^b \left[ \sum_i a_i(x(t)) \frac{dx^i}{dt} \right] dt,$$
@@ -413,8 +425,8 @@ We have defined the integral of a $p$-form $\omega$ over a $p$-simplex
 in a manifold $M$, however it is possible to define more in general what
 is $$\int_M \omega,$$
 
-when $M$ is an oriented manifold (see e.g. Section 6.3 in
-[@epstein2010geometrical]).
+when $M$ is an oriented manifold (see e.g. Section 6.3 in (Epstein
+2010)).
 
 The most important result regarding the integral of a differential form
 is the following
@@ -437,7 +449,7 @@ Stokes the exterior derivative of an exterior derivative is always zero.
 ## The Hodge Star Operator
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.2.3
+**References:** (Grady and Polimeni 2010), Section 2.2.3
 :::
 
 The Hodge star operator $\star$ is a linear mapping from $p$-forms to
@@ -463,20 +475,20 @@ $p$-form $\omega$.
 The Hodge star operator has the following properties, given two
 $p$-forms $\alpha$ and $\beta$ and a scalar function $f$.
 
--   $\star \alpha \wedge \beta = \star \beta \wedge \alpha$.
+- $\star \alpha \wedge \beta = \star \beta \wedge \alpha$.
 
--   $\star(f\alpha) = f\star\alpha$.
+- $\star(f\alpha) = f\star\alpha$.
 
--   $\star (\star \alpha) = (-1)^{p(n-p)} \alpha$.
+- $\star (\star \alpha) = (-1)^{p(n-p)} \alpha$.
 
--   $\star \star \star \star \alpha = \alpha$.
+- $\star \star \star \star \alpha = \alpha$.
 
--   $\alpha \wedge \star \alpha = 0$ if and only if $\alpha = 0$.
+- $\alpha \wedge \star \alpha = 0$ if and only if $\alpha = 0$.
 
 Using these properties we obtain
 $$\alpha \wedge \star \beta = \langle \boldsymbol{\alpha}, \boldsymbol{\beta}\rangle \text{vol}^n,$$
-where $\boldsymbol{\alpha},\boldsymbol{\beta}$ are respectively the vector of
-coefficients of $\alpha,\beta$ and
+where $\boldsymbol{\alpha},\boldsymbol{\beta}$ are respectively the
+vector of coefficients of $\alpha,\beta$ and
 $$\text{vol}^n = \sqrt{\text{det}(\boldsymbol{G})}dx^1 \wedge \dots \wedge dx^n.$$
 :::
 
@@ -500,7 +512,7 @@ $$\star d \alpha \Leftrightarrow \text{curl}(\boldsymbol{\alpha}), \quad \star d
 ## Laplace-de Rham Operator
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.2.3.1
+**References:** (Grady and Polimeni 2010), Section 2.2.3.1
 :::
 
 We have already seen that the exterior derivative operator maps
@@ -528,23 +540,23 @@ defined as $$\Delta := d\,d^* + d^*\,d$$
 ::::
 
 Note that the Laplace-de Rham operator is self adjoint and is the
-extension of the standard Laplacian up to a sign, i.e. if $f$ is a
+extension of the standard Laplacian up to a sign, i.e. if $f$ is a
 $0$-form then $$\Delta f = - \nabla^2 f.$$
 
 ## Vector Bundles and Vector-Valued Differential Forms
 
 Schema per scrivere sta parte:
 
--   Covariant differentiation
+- Covariant differentiation
 
--   Bundle-valued forms
+- Bundle-valued forms
 
 [Intro alla sezione?]{style="color: red"}
 
 ### Vector Bundles
 
 ::: refbox
-**References:** [@darling1994differential], Chapter 6
+**References:** (Darling 1994), Chapter 6
 :::
 
 [Aggiustare]{style="color: red"}
@@ -559,7 +571,7 @@ with values in some vector bundle $E$ of a smooth manifold $M$. A
 *vector-valued differential form* is then a differential forms with
 values in the trivial bundle $M \times V$.
 
-In the general case, i.e. for vector-bundle differential forms, one
+In the general case, i.e. for vector-bundle differential forms, one
 defines the concepts of *connection* $\nabla$, *parallel transport* and
 finally *exterior covariant derivative* $d_{\nabla}$, which is the
 natural counterpart of the exterior derivative for differential forms.
@@ -572,9 +584,9 @@ definizioni]{style="color: red"}
 **Definition 24**. Let $M$ be a differential manifold and let
 $\mathcal{V}$ be a $k$-dimensional vector space. The product manifold
 $M \times V$ together with the projection map
-$\pi: M \times V \rightarrow M$ such that $\pi(p, \boldsymbol{v}) = p$ is a
-**local vector bundle of rank $k$** (or **trivial bundle of rank $k$**)
-over $M$.
+$\pi: M \times V \rightarrow M$ such that $\pi(p, \boldsymbol{v}) = p$
+is a **local vector bundle of rank $k$** (or **trivial bundle of rank
+$k$**) over $M$.
 :::
 ::::
 
@@ -609,19 +621,18 @@ together with a smooth surjective map $\pi: E \rightarrow M$ (called
 **projection**) is a $C^r$ **vector bundle of rank $k$ over $M$** if the
 following three conditions hold:
 
--   There exists a $k$-dimensional vector space $\mathcal{V}$ such that,
-    for every $p \in M$, $E_p := \pi^{-1}(p)$ is a real vector space
-    isomorphic to $\mathcal{V}$. $E_p$ is called the **fiber** over $p$.
+- There exists a $k$-dimensional vector space $\mathcal{V}$ such that,
+  for every $p \in M$, $E_p := \pi^{-1}(p)$ is a real vector space
+  isomorphic to $\mathcal{V}$. $E_p$ is called the **fiber** over $p$.
 
--   Each point in $M$ is contained in some open set $U \subseteq M$ such
-    that there is a $C^r$ diffeomorphism
-    $$\Phi_U: \pi^{-1}(U) \rightarrow U \times V \label{loctriv}$$ such
-    that $\Phi_U(E_p) = \{p\} \times V$.
+- Each point in $M$ is contained in some open set $U \subseteq M$ such
+  that there is a $C^r$ diffeomorphism
+  $$\Phi_U: \pi^{-1}(U) \rightarrow U \times V \label{loctriv}$$ such
+  that $\Phi_U(E_p) = \{p\} \times V$.
 
--   For any two open sets $U, U'$ with $U \cap U' \neq \emptyset$, the
-    map
-    $$\Phi_U \circ \Phi^{-1}_{U'}: (U \cap U') \times V \rightarrow (U \cap U') \times V$$
-    is a $C^r$ local vector bundle isomorphism over identity.
+- For any two open sets $U, U'$ with $U \cap U' \neq \emptyset$, the map
+  $$\Phi_U \circ \Phi^{-1}_{U'}: (U \cap U') \times V \rightarrow (U \cap U') \times V$$
+  is a $C^r$ local vector bundle isomorphism over identity.
 :::
 ::::
 
@@ -643,12 +654,12 @@ In other words, $\sigma(p) \in E_p$ for all $p \in M$.
 $s$.](Figures/Section.png){width="8cm" height="5cm"}
 
 All the constructions with trivial bundles are valid for any $C^r$
-vector bundle: see 6.4.3 of [@darling1994differential].
+vector bundle: see 6.4.3 of (Darling 1994).
 
 ### Connections on Vector Bundles
 
 ::: refbox
-**References:** [@darling1994differential], Chapter 9
+**References:** (Darling 1994), Chapter 9
 :::
 
 Let $\pi: E \rightarrow M$ be a smooth rank-$m$ vector bundle and
@@ -656,10 +667,11 @@ $\sigma: M \rightarrow E$ be a section. In terms of a local frame field
 $\{s_1, \dots, s_m\}$, we can write
 $$\sigma(r) = \sum_i \sigma^i(r) s_i(r) \in E_p,$$ where $\sigma^i$ is a
 smooth function in some open set of $M$ for any $i$. Given a vector
-field $\boldsymbol{v}$ on $M$, we want to define what it means to "differentiate
-a section $\sigma$ with respect to $\boldsymbol{v}$". In other terms, we would
-like to have a new section $\nabla_{\boldsymbol{v}} \sigma$ which satisfy for
-all smooth functions $h \in C^{\infty}(M)$ the Leibniz rule, i.e.
+field $\boldsymbol{v}$ on $M$, we want to define what it means to
+"differentiate a section $\sigma$ with respect to $\boldsymbol{v}$". In
+other terms, we would like to have a new section
+$\nabla_{\boldsymbol{v}} \sigma$ which satisfy for all smooth functions
+$h \in C^{\infty}(M)$ the Leibniz rule, i.e.
 $$\nabla_{\boldsymbol{v}}(h \sigma) = h(\nabla_{\boldsymbol{v}}\sigma) + (\boldsymbol{v}h)\sigma$$
 and satisfying $$\begin{aligned}
     &\nabla_{h \boldsymbol{v}} \sigma = h (\nabla_{\boldsymbol{v}} \sigma),\\
@@ -697,8 +709,8 @@ $(\omega_1, \dots, \omega_m)$ of scalar-valued $q$-forms on $M$.
 # Discrete Calculus
 
 ::: refbox
-**References:** [@grady2010discrete]. [@hirani2003discrete].
-[@grinspun2006discrete]
+**References:** (Grady and Polimeni 2010). (Hirani 2003). (Grinspun et
+al. 2006)
 :::
 
 After having introduced the basics of exterior calculus, in this section
@@ -708,8 +720,8 @@ appropriately the tools introduced before in a continuous setting.
 ## Discrete Domains
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.3.1.
-[@hirani2003discrete], Section 2.1, 2.3. [@grinspun2006discrete]
+**References:** (Grady and Polimeni 2010), Section 2.3.1. (Hirani 2003),
+Section 2.1, 2.3. (Grinspun et al. 2006)
 :::
 
 :::: defbox
@@ -730,28 +742,27 @@ When a $p$-cell consists of exactly $p+1$ vertices it is called
 **Definition 32**. A collection of cells defines a **cell complex** if
 it satisfies the following rules:
 
--   The boundary of each $p$-cell (for $p > 0$) comprises the union of
-    lower-order $p$-cells.
+- The boundary of each $p$-cell (for $p > 0$) comprises the union of
+  lower-order $p$-cells.
 
--   The intersection of any two cells is either empty or a boundary
-    element of both cells.
+- The intersection of any two cells is either empty or a boundary
+  element of both cells.
 :::
 ::::
 
-This definition is exactly the concept of discrete manifold in
-[@grinspun2006discrete] (see p. 43, Section 3.1.5). In
-[@hirani2003discrete] cell complexes defined according to the previous
-statement are called *manifold-like cell complex*. Hence, we can think
-that a cell complex is the discrete counterpart of a manifold, in the
-sense that in discrete calculus it plays the role of a manifold in
-classical exterior calculus.
+This definition is exactly the concept of discrete manifold in (Grinspun
+et al. 2006) (see p. 43, Section 3.1.5). In (Hirani 2003) cell complexes
+defined according to the previous statement are called *manifold-like
+cell complex*. Hence, we can think that a cell complex is the discrete
+counterpart of a manifold, in the sense that in discrete calculus it
+plays the role of a manifold in classical exterior calculus.
 
 A **simplicial complex** is a cell complex in which every $p$-cell is a
 $p$-simplex.
 
 ![An example of a $2$-simplicial complex (left) and a not simplicial
 complex
-(right).](Figures/Cell complex vs not cell complex.png){width="8cm"
+(right).](Figures/Cell%20complex%20vs%20not%20cell%20complex.png){width="8cm"
 height="5cm"}
 
 We now introduce some operative definitions that we are going to use in
@@ -775,7 +786,7 @@ $n$-subspace of $\mathbb{R}^N$.
 
 We will require that each $p$-cell is oriented and the orientation is
 specified by the order of nodes used to represent the $p$-cell. See p.
-42-44 of [@grady2010discrete] for more details in this regard.
+42-44 of (Grady and Polimeni 2010) for more details in this regard.
 
 ::: importantbox
 We also introduce the following notation for $p$-simplices:
@@ -829,7 +840,7 @@ $$c_p = \sum_j c_p(\sigma^p_j) \sigma^p_j,$$
 where $c_p(\sigma^p_j) \in \mathbb{R}$ and $\sigma_j$ is a basic chain
 for any $j$. Thus, any $p$-chain may be represent by a $n_p \times 1$
 (row) vector $\sf{c}_p$ and by applying the incidence matrix
-$\mathsf{A}_p$ to it we obtain a $(p-1)$-chain, i.e. in components
+$\mathsf{A}_p$ to it we obtain a $(p-1)$-chain, i.e. in components
 $$\sf{c}_{p-1} = \sf{A}_p \sf{c}_p,$$
 
 where $\sf{c}_{p-1}$ is the array of the coefficients of the
@@ -850,7 +861,7 @@ $2$-chains represents areas and so on.
 ## Discrete Forms and Coboundary
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.3.1
+**References:** (Grady and Polimeni 2010), Section 2.3.1
 :::
 
 :::: defbox
@@ -882,8 +893,8 @@ $$\langle \langle c^p, c_p \rangle \rangle:= \sum_{i=1}^{n_p} c_p(\sigma^p_i)c^p
 :::: defbox
 ::: Def
 **Definition 40**. We define the matrix form of **coboundary operator**
-$\boldsymbol{D}_p$ as the adjoint of the boundary operator through the pairing
-defined previously[^2], i.e. by definition
+$\boldsymbol{D}_p$ as the adjoint of the boundary operator through the
+pairing defined previously[^2], i.e. by definition
 $$\langle \langle\boldsymbol{D}_p\boldsymbol{c}^{p-1}, \boldsymbol{c}_p \rangle \rangle= \langle \langle\boldsymbol{c}^{p-1}, \boldsymbol{A}_p\boldsymbol{c}_p \rangle \rangle.$$
 Hence, $\boldsymbol{D}_p = \boldsymbol{A}^T_p$.
 
@@ -907,9 +918,8 @@ Stokes' Theorem holds (see the previous definition).
 ## Primal and Dual Complexes
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.3.3.
-[@tonti2013mathematical], Section 4.2.1. [@hirani2003discrete], Chapter
-2.
+**References:** (Grady and Polimeni 2010), Section 2.3.3. (Tonti 2013),
+Section 4.2.1. (Hirani 2003), Chapter 2.
 :::
 
 Given a cell complex of dimension $n$, we can define its *dual* by
@@ -917,15 +927,14 @@ associating a $p$-cell with an $(n-p)$-cell, following a specific rule.
 In the case of simplicial complex, the following rules are of relevant
 importance, since they are the most used in applications.
 
--   **Circumcentric (Voronoi) dual**. Voronoi cells are polygons whose
-    sides are the axes of the edges of a primal simplicial complex.
+- **Circumcentric (Voronoi) dual**. Voronoi cells are polygons whose
+  sides are the axes of the edges of a primal simplicial complex.
 
--   **Barycentric dual**. Barycentric cells are polygons obtained by
-    connecting the barycentre of every triangle with the midpoint of the
-    edges of the triangles.
+- **Barycentric dual**. Barycentric cells are polygons obtained by
+  connecting the barycentre of every triangle with the midpoint of the
+  edges of the triangles.
 
-For more details on this construction, see section 4.2 of
-[@tonti2013mathematical].
+For more details on this construction, see section 4.2 of (Tonti 2013).
 
 The dual of a cell complex $K$ is indicated as $\star K$ and a generic
 dual $p$-cell of $\star K$ is indicated as $\star \sigma^{(n-p)}$.
@@ -936,26 +945,26 @@ Once we have a primal complex, we have to orient it in order to compute
 properly the boundary matrices. To do so, we choose one of the two
 possible orientations, clockwise or counterclockwise, for all the
 $n$-cells and this choice induces an orientation for all the $p$-cells
-with $0 \leq p \leq n-1$, see [@hirani2003discrete] Definition 2.3.5.
+with $0 \leq p \leq n-1$, see (Hirani 2003) Definition 2.3.5.
 
-We follow the vision of [@hirani2003discrete] who says that points (i.e.
-$0$-cells) have no orientation, even though in [@tonti2013mathematical]
-points are oriented as sinks or sources.
+We follow the vision of (Hirani 2003) who says that points (i.e.
+$0$-cells) have no orientation, even though in (Tonti 2013) points are
+oriented as sinks or sources.
 
 Following this receipt, we are able to give an orientation to the all
 the $p$-cells of the primal complex. This induces an orientation of all
 the $p$-cells of the dual complex and this is due to the the fact that
 the primal $p$-cells and dual $(n-p)$-cells have a clear association.
-Following the algorithm described in Remark 2.5.1 of
-[@hirani2003discrete] we are able to orient all the dual $p$-cells.
-Geometrically, we orient the dual $(n-p)$-cell rotating of $\pi/2$
-counterclockwise the orientation of the corresponding primal $p$-cell.
+Following the algorithm described in Remark 2.5.1 of (Hirani 2003) we
+are able to orient all the dual $p$-cells. Geometrically, we orient the
+dual $(n-p)$-cell rotating of $\pi/2$ counterclockwise the orientation
+of the corresponding primal $p$-cell.
 
 We follow the previous rule to orient primal and dual complex. Note that
 this choice is crucial: if we change the orientation rule, we will also
 have to touch the definition of the operators (coboundary, hodge star,
-etc). For example, in [@grady2010discrete] the induced orientation of
-the dual complex is different and consequently the definition of the
+etc). For example, in (Grady and Polimeni 2010) the induced orientation
+of the dual complex is different and consequently the definition of the
 operators is different.
 
 ### Dual boundary
@@ -965,8 +974,8 @@ have a dual coboundary $d^\star$ obtained by the relation
 $$\langle \langle d^\star \alpha, \star \beta \rangle \rangle= \langle \langle\alpha, \partial^\star  \star \beta \rangle \rangle.$$
 
 We have to take care about the sign of the dual boundary, as stated in
-[@schulz2020convergence]. The following definition
-[@schulz2020convergence] is consistent with our orientation rule.
+(Schulz and Tsogtgerel 2020). The following definition (Schulz and
+Tsogtgerel 2020) is consistent with our orientation rule.
 
 :::: defbox
 ::: Def
@@ -981,10 +990,9 @@ $\tau$.
 ::::
 
 As we stated previously, the definition of the dual coboundary operator
-is straightforward now. The following result
-[@munkres2018elements; @milicchio2008codimension], called *Poincarè
-duality*, gives us an explicit relation between primal coboundary and
-dual boundary.
+is straightforward now. The following result (Munkres 2018; Milicchio et
+al. 2008), called *Poincarè duality*, gives us an explicit relation
+between primal coboundary and dual boundary.
 
 :::: importantbox
 ::: Th
@@ -998,12 +1006,12 @@ that the following diagram commutes for any $k$. $$\begin{CD}
 :::
 ::::
 
-The proof of the previous Theorem (see proof of Theorem 65.1 of
-[@munkres2018elements]) is constructive and we can see that the
-definition of $\phi_p$ is strongly dependent on the orientation.
+The proof of the previous Theorem (see proof of Theorem 65.1 of (Munkres
+2018)) is constructive and we can see that the definition of $\phi_p$ is
+strongly dependent on the orientation.
 
 The following result is a practical consequence of the previous
-statements [@schulz2020convergence; @desbrun2005discrete]
+statements (Schulz and Tsogtgerel 2020; Desbrun et al. 2005)
 
 ::: importantbox
 Given a primal $n$-complex, the matrix representation of the boundary
@@ -1038,13 +1046,12 @@ primal $1$-cell inherits the orientation of the parent $2$-cell (except
 $\sigma^1_4$, in which we choose an arbitrary orientation). Now we are
 able to orient the dual $1$ and $2$-cells *consistently* with respect to
 primal orientations. We follow the algorithm described in Remark 2.5.1
-in [@hirani2003discrete]. To see how it works, we orient for example the
-dual $2$-cell $\star \sigma^0_0$ and the dual $1$-cell
-$\star \sigma^1_1$.
+in (Hirani 2003). To see how it works, we orient for example the dual
+$2$-cell $\star \sigma^0_0$ and the dual $1$-cell $\star \sigma^1_1$.
 
 1.  We have to understand if $\star \sigma^0_0$ is oriented
-    counterclockwise or clockwise. To do so, following
-    [@hirani2003discrete] we have to compute
+    counterclockwise or clockwise. To do so, following (Hirani 2003) we
+    have to compute
     $$s := \text{sgn}([c(\sigma^0_0), c(\sigma^1_0), c(\sigma^2_0)], \sigma^2_0)$$
     A simple computation shows that $s = 1$, thus the dual simplex
     $\star \sigma^0_0$ is oriented counterclockwise. Indeed, we have
@@ -1052,8 +1059,8 @@ $\star \sigma^1_1$.
     $\star \sigma^0_0 = s [c(\sigma^0_0), c(\sigma^1_0), c(\sigma^2_0)] = [c(\sigma^0_0), c(\sigma^1_0), c(\sigma^2_0)]$.
 
 2.  For sure $\star \sigma_1^1 = s [c(\sigma^1_0), c(\sigma^2_0)]$,
-    where $s = \pm 1$. According to Remark 2.5.1 of
-    [@hirani2003discrete], we actually have
+    where $s = \pm 1$. According to Remark 2.5.1 of (Hirani 2003), we
+    actually have
     $$s = \text{sgn}([c(\sigma^0_0), c(\sigma^1_0)], \sigma^1_0) \cdot \text{sgn}([c(\sigma^0_0), c(\sigma^1_0), c(\sigma^2_0)], \sigma^2_0) = 1\cdot 1 = 1.$$
     Hence, $\star \sigma^1_1 = [c(\sigma^1_0), c(\sigma^2_0)]$.
 
@@ -1078,7 +1085,7 @@ get $$\sf{A}_1 = \begin{bmatrix}
 ## The Role of a Metric
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.3.4
+**References:** (Grady and Polimeni 2010), Section 2.3.4
 :::
 
 As in the differential formulation, we need a **metric tensor** to
@@ -1093,8 +1100,8 @@ Anyway, as we stated previously given a metric tensor $G$ we can convert
 a given $p$-chain into its equivalent $p$-cochain $c^p$ through the
 relation (in components) $$c^p = \boldsymbol{G}_p c_p.$$
 
-Thanks to the metric tensor $\boldsymbol{G}_p$, we can define the **discrete
-Hodge star operator**.
+Thanks to the metric tensor $\boldsymbol{G}_p$, we can define the
+**discrete Hodge star operator**.
 
 :::: defbox
 ::: Def
@@ -1132,7 +1139,7 @@ $$\star_k \star_{n-k} = (-1)^{k(n-k)} \text{Id}.$$
 ## Discrete Wedge Product and $L^2$ Inner Product
 
 ::: refbox
-**References:** [@desbrun2005discrete], Section 12.
+**References:** (Desbrun et al. 2005), Section 12.
 :::
 
 In the differential framework, it is possible to define an inner-product
@@ -1158,7 +1165,7 @@ $$\boldsymbol{c}^T_1 \mathsf{S} \boldsymbol{c}_2.$$
 In the same fashion, it is possible to define the discrete $L^2$ inner
 product for dual $p$-cochains.
 
-In [@desbrun2005discrete] the discrete $L^2$ inner product of
+In (Desbrun et al. 2005) the discrete $L^2$ inner product of
 $c_1^p, c^p_2 \in \mathcal{C}^p(K, \mathbb{R})$ is defined as
 $$\langle c_1^p, c_2^{p} \rangle := \sum_{\sigma^p \in K^{(p)}} \frac{|V_{\sigma^p}|}{|\sigma^p||\star \sigma^p|} \langle c_1^p, \sigma^p \rangle \langle \star c_2^{p}, \star \sigma^p \rangle = \frac{1}{n} \sum_{\sigma^p \in K^{(p)}} \langle c_1^p, \sigma^p \rangle \langle \star c_2^{p}, \star \sigma^p \rangle,$$
 which becomes in matrix-vector form
@@ -1169,15 +1176,15 @@ We prefer to define the discrete inner product as in
 Indeed, "mimicking the smooth setting, each inner product matrix
 $\mathsf{S}$ determines a linear mapping from a discrete $p$-form to a
 discrete version of the dual $(n-p)$-form" (hence a discrete Hodge star
-operator!) [@de2016subdivision]. In other words, the second definition
+operator!) (De Goes et al. 2016). In other words, the second definition
 is not consistent with our definition of the Hodge Star, since for
 $n \neq 1$ $\frac{1}{n} \mathsf{S} \neq \mathsf{S}$.
 
 ## The Discrete Codifferential Operator
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.3.5.
-[@grinspun2006discrete], Section 5.5 (page 50)
+**References:** (Grady and Polimeni 2010), Section 2.3.5. (Grinspun et
+al. 2006), Section 5.5 (page 50)
 :::
 
 Using discrete Hodge star operator, we are able to define the **dual
@@ -1202,9 +1209,9 @@ $$\langle d\alpha, \beta  \rangle = \langle \alpha, \delta \beta \rangle.$$
 ::: importantbox
 Because of the relationship between the incidence matrices in the primal
 and dual complexes, we have
-$$\boldsymbol{D}^*_p = (-1)^{n(p-1)+1} \star \boldsymbol{A}_p \star.$$ Since the
-discrete Hodge star operator is a diagonal matrix, we can rewrite the
-previous equation as
+$$\boldsymbol{D}^*_p = (-1)^{n(p-1)+1} \star \boldsymbol{A}_p \star.$$
+Since the discrete Hodge star operator is a diagonal matrix, we can
+rewrite the previous equation as
 $$\boldsymbol{D}^*_p = (-1)^{n(p-1)+1}\boldsymbol{G}^*_{n-p+1} \boldsymbol{D}_p \boldsymbol{G}_p^{-1} = (-1)^{n(p-1)+1}\boldsymbol{G}_{p-1} \boldsymbol{D}_p \boldsymbol{G}_p^{-1}.$$
 :::
 
@@ -1222,7 +1229,7 @@ finally get $$\delta^*_p := (-1)^{p(n+1-p)} \star d_{n-p} \star$$
 ## The Discrete Laplace-de Rham Operator
 
 ::: refbox
-**References:** [@grady2010discrete], Section 2.3.6
+**References:** (Grady and Polimeni 2010), Section 2.3.6
 :::
 
 Recall that the *Laplace-de Rham operator* in the differential
@@ -1234,14 +1241,15 @@ definition.
 :::: defbox
 ::: Def
 **Definition 47**. The **discrete Laplace-de Rham operator** is defined
-as $$\boldsymbol{L}_p := \boldsymbol{D}_p \boldsymbol{D}^*_p + \boldsymbol{D}^*_{p+1}\boldsymbol{D}_{p+1}.$$
+as
+$$\boldsymbol{L}_p := \boldsymbol{D}_p \boldsymbol{D}^*_p + \boldsymbol{D}^*_{p+1}\boldsymbol{D}_{p+1}.$$
 :::
 ::::
 
 ## Interpolation Functions (Hirani's version)
 
 ::: refbox
-**References:** [@hirani2003discrete], Section 2.7
+**References:** (Hirani 2003), Section 2.7
 :::
 
 In the following definitions, let $K$ be a well-centered simplicial
@@ -1268,23 +1276,24 @@ $\mathbb{R}$ are called **interpolation functions**.
 
 4.  $\phi_{D(\sigma^n), D(\sigma^0)}$ is the **dual-dual** interpolation
     function supported on $\overline{D(\sigma^0)}$ and it is defined
-    precisely in [@hirani2003discrete] on p.24.
+    precisely in (Hirani 2003) on p.24.
 :::
 ::::
 
 ## Discrete Vector Fields
 
 ::: refbox
-**References:** [@hirani2003discrete], Section 5.1
+**References:** (Hirani 2003), Section 5.1
 :::
 
 :::: defbox
 ::: Def
 **Definition 49**. Let $K$ be a well-centered simplicial cell-complex. A
 **discrete dual vector field** $\boldsymbol{v}$ on $K$ is a map
-$\boldsymbol{v}: K_{(0)} \rightarrow \mathbb{R}^N$ where $K_{(0)}$ are the dual
-vertices of $D(K)$ such that for any $\star \sigma^n \in K_{(0)}$
-$\boldsymbol{v}(\star \sigma^n)$ is in the same plane as $\star \sigma^n$.
+$\boldsymbol{v}: K_{(0)} \rightarrow \mathbb{R}^N$ where $K_{(0)}$ are
+the dual vertices of $D(K)$ such that for any
+$\star \sigma^n \in K_{(0)}$ $\boldsymbol{v}(\star \sigma^n)$ is in the
+same plane as $\star \sigma^n$.
 
 The space of dual vector fields is denoted as $\mathcal{V}_d(\star K)$.
 :::
@@ -1293,9 +1302,9 @@ The space of dual vector fields is denoted as $\mathcal{V}_d(\star K)$.
 :::: defbox
 ::: Def
 **Definition 50**. Let $K$ be a flat well-centered simplicial
-cell-complex. A **discrete primal vector field** $\boldsymbol{v}$ is a map
-$\boldsymbol{v}: K^{(0)} \rightarrow \mathbb{R}^n$ where $K^{(0)}$ is the set of
-$0$-cells.
+cell-complex. A **discrete primal vector field** $\boldsymbol{v}$ is a
+map $\boldsymbol{v}: K^{(0)} \rightarrow \mathbb{R}^n$ where $K^{(0)}$
+is the set of $0$-cells.
 
 The space of primal vector fields is denoted as $\mathcal{V}_d(K)$.
 :::
@@ -1308,28 +1317,30 @@ in dimension 2.](Figures/VectorFields.png){width="8cm" height="7cm"}
 ::: Def
 **Definition 51**.
 
-1.  Let $K$ be a flat primal complex. Given $\boldsymbol{v}\in \mathcal{V}_d(K)$
-    the **primal-primal interpolated** vector field
+1.  Let $K$ be a flat primal complex. Given
+    $\boldsymbol{v}\in \mathcal{V}_d(K)$ the **primal-primal
+    interpolated** vector field
     $$\sum_{\sigma^n}\sum_{\sigma^0 \prec \sigma^n}\boldsymbol{v}(\sigma^0)\phi_{\sigma^0, \sigma^n}$$
     is a continous piecewise affine vector field on the underlying space
     of $K$ (which we will denote as $|K|$).
 
-2.  Let $K$ be a flat primal complex. Given $\boldsymbol{v}\in \mathcal{V}_d(K)$
-    the **primal-dual interpolated** vector field
-    $$\sum_{\sigma^0}\boldsymbol{v}(\sigma^0)\phi_{\sigma^0, D(\sigma^0)}$$ is a
-    piecewise constant vector field which is defined in each
+2.  Let $K$ be a flat primal complex. Given
+    $\boldsymbol{v}\in \mathcal{V}_d(K)$ the **primal-dual
+    interpolated** vector field
+    $$\sum_{\sigma^0}\boldsymbol{v}(\sigma^0)\phi_{\sigma^0, D(\sigma^0)}$$
+    is a piecewise constant vector field which is defined in each
     $D(\sigma^0)$.
 
 3.  Let $K$ be a primal complex. Given
-    $\boldsymbol{v}\in \mathcal{V}_d(\star K)$ the **dual-primal interpolated**
-    vector field
+    $\boldsymbol{v}\in \mathcal{V}_d(\star K)$ the **dual-primal
+    interpolated** vector field
     $$\sum_{\sigma^n}\boldsymbol{v}(\star \sigma^n)\phi_{D(\sigma^n), \sigma^n}$$
     is a piecewise constant vector field which is defined in each
     $\text{Int}(\sigma^n)$.
 
 4.  Let $K$ be a flat primal complex. Given
-    $\boldsymbol{v}\in \mathcal{V}_d(\star K)$ the **dual-dual interpolated**
-    vector field
+    $\boldsymbol{v}\in \mathcal{V}_d(\star K)$ the **dual-dual
+    interpolated** vector field
     $$\sum_{\sigma^0}\sum_{\sigma^n \succ \sigma^0}\boldsymbol{v}(\star \sigma^n)\phi_{D(\sigma^n), D(\sigma^0)}$$
     is a piecewise smooth vector field continous on $|K|$ and smooth in
     each $D(\sigma^0)$.
@@ -1339,7 +1350,7 @@ in dimension 2.](Figures/VectorFields.png){width="8cm" height="7cm"}
 ## Discrete Flat and Sharp (Hirani's version)
 
 ::: refbox
-**References:** [@hirani2003discrete], Section 5.2-5.8
+**References:** (Hirani 2003), Section 5.2-5.8
 :::
 
 In the discrete counterpart, we have at least $8$ different flat
@@ -1373,10 +1384,10 @@ $$\begin{aligned}
 \end{aligned}$$
 
 where $\vec{\sigma}^1$ is the vector-representation of the simplex
-taking account of the order and $\boldsymbol{v}(\sigma^n) \cdot \vec{\sigma}^1$
-is the usual dot product in $\mathcal{E}^n$. $\flat_{dpp}$ is neither
-injective nor surjective, hence it does not even have a one-sided
-inverse.
+taking account of the order and
+$\boldsymbol{v}(\sigma^n) \cdot \vec{\sigma}^1$ is the usual dot product
+in $\mathcal{E}^n$. $\flat_{dpp}$ is neither injective nor surjective,
+hence it does not even have a one-sided inverse.
 
 #### PP-sharp
 
@@ -1396,15 +1407,15 @@ height="5.5cm"}
 ## Pairing of Cochains and Discrete Vector Fields
 
 ::: refbox
-**References:** [@hirani2003discrete], Section 5.10
+**References:** (Hirani 2003), Section 5.10
 :::
 
 :::: defbox
 ::: Def
 **Definition 52**. Let $K$ be an $n$-simplicial cell complex,
-$\alpha \in \mathcal{C}^1(K, \mathbb{R})$, $\boldsymbol{v}\in \mathcal{V}_d(K)$.
-The **discrete natural pairing** of $\alpha(\boldsymbol{v})$ at a $0$-simplex
-$\sigma^0$ is defined as
+$\alpha \in \mathcal{C}^1(K, \mathbb{R})$,
+$\boldsymbol{v}\in \mathcal{V}_d(K)$. The **discrete natural pairing**
+of $\alpha(\boldsymbol{v})$ at a $0$-simplex $\sigma^0$ is defined as
 $$\alpha(\boldsymbol{v})(\sigma^0) := \boldsymbol{\alpha}^{\sharp}(\sigma^0) \cdot \boldsymbol{v}(\sigma^0),$$
 where $\cdot$ is the euclidean dot product in the embedding space
 $\mathcal{E}^n$.
@@ -1414,8 +1425,8 @@ $\mathcal{E}^n$.
 ## Whitney forms and de Rham Map {#whitneyRham}
 
 ::: refbox
-**References:** [@hirani2003discrete], Section 3.3. [@lohi2021whitney].
-[@grinspun2006discrete]
+**References:** (Hirani 2003), Section 3.3. (Lohi and Kettunen 2021).
+(Grinspun et al. 2006)
 :::
 
 We have already seen that musical isomorphisms (flat and sharp
@@ -1457,11 +1468,11 @@ To provide the definition of Whitney forms, we need the concept of
 be a generic $0$-cell of the complex. We define a function
 $\lambda_{\sigma^0_i}: K^{(n)} \rightarrow [0,1]$ as follows:
 
--   $\lambda_{\sigma^0_i}(\sigma_k^0) = \delta_{ik}$, where
-    $\delta_{ik}$ is the Kronecker delta.
+- $\lambda_{\sigma^0_i}(\sigma_k^0) = \delta_{ik}$, where $\delta_{ik}$
+  is the Kronecker delta.
 
--   $\lambda_{\sigma^0_i}$ linearly goes to zero in the one-ring
-    neighborhood of $\sigma_i^0$.
+- $\lambda_{\sigma^0_i}$ linearly goes to zero in the one-ring
+  neighborhood of $\sigma_i^0$.
 
 The functions $\lambda_{\sigma_i^0}$ are called **barycentric
 functions** or **hat functions**.
@@ -1479,20 +1490,20 @@ $C(K, [0,1])$ be the set of continuous functions defined in $K$ and with
 image in $[0,1]$. We define the **Whitney forms** iteratively as
 follows.
 
--   The Whitney $0$-map is a function
-    $\mathcal{W}^0: \mathcal{C}^0(K, \mathbb{R}) \rightarrow C(K, [0,1])$
-    defined as
-    $$\mathcal{W}^0(\sum_i a_i \sigma^0_i) := \sum_i a_i \lambda_{\sigma^0_i}.$$
+- The Whitney $0$-map is a function
+  $\mathcal{W}^0: \mathcal{C}^0(K, \mathbb{R}) \rightarrow C(K, [0,1])$
+  defined as
+  $$\mathcal{W}^0(\sum_i a_i \sigma^0_i) := \sum_i a_i \lambda_{\sigma^0_i}.$$
 
--   The Whitney $p$-map for $p>0$ is a function
-    $\mathcal{W}^p: \mathcal{C}^p(K, \mathbb{R}) \rightarrow \Lambda^p(K^{(p)})$
-    defined at every basic $p$-cochain $\sigma^i_p$ referred to the
-    $p$-cell $\sigma^p_i = [x_0, \dots, x_p]$ as
-    $$\mathcal{W}^p(\sigma^i_p) := p!\sum_{i=0}^p (-1)^i \lambda_{x_i} d\lambda_{x_0} \wedge \dots \widehat{d\lambda_{x_i}} \wedge d\lambda_{x_p},$$
-    where $\widehat{\quad \quad}$ indicates a term omitted from the
-    product. Obviously for a generic $p$-cochain the Whitney map acts as
-    follows
-    $$\mathcal{W}^p(\sum_i a_i \sigma^i_p) := \sum_i a_i \mathcal{W}^p(\sigma^i_p).$$
+- The Whitney $p$-map for $p>0$ is a function
+  $\mathcal{W}^p: \mathcal{C}^p(K, \mathbb{R}) \rightarrow \Lambda^p(K^{(p)})$
+  defined at every basic $p$-cochain $\sigma^i_p$ referred to the
+  $p$-cell $\sigma^p_i = [x_0, \dots, x_p]$ as
+  $$\mathcal{W}^p(\sigma^i_p) := p!\sum_{i=0}^p (-1)^i \lambda_{x_i} d\lambda_{x_0} \wedge \dots \widehat{d\lambda_{x_i}} \wedge d\lambda_{x_p},$$
+  where $\widehat{\quad \quad}$ indicates a term omitted from the
+  product. Obviously for a generic $p$-cochain the Whitney map acts as
+  follows
+  $$\mathcal{W}^p(\sum_i a_i \sigma^i_p) := \sum_i a_i \mathcal{W}^p(\sigma^i_p).$$
 :::
 ::::
 
@@ -1519,8 +1530,8 @@ $$\mathcal{W}^p d c^p = d \mathcal{W}^p c^p$$*
 :::
 ::::
 
-See p.3 of [@lohi2021whitney] for some interesting comments and remarks
-regarding Whitney forms.
+See p.3 of (Lohi and Kettunen 2021) for some interesting comments and
+remarks regarding Whitney forms.
 
 ## Vector-valued and Tensor-valued Cochains
 
@@ -1545,23 +1556,25 @@ Lin and it is indicated as $\mathcal{C}^p(K, \text{Lin})$.
 Any vector-valued $p$-cochain can be written as a linear combination
 (with vector coefficients!) of basic $p$-cochains, in other words we can
 write a generic vector-valued $p$-cochain as
-$$\boldsymbol{c}^p = \sum_i \boldsymbol{c}^p(\sigma_p^i)\sigma_p^i,$$ where each
-$\boldsymbol{c}^p(\sigma_p^i) \in \mathcal{V}$.
+$$\boldsymbol{c}^p = \sum_i \boldsymbol{c}^p(\sigma_p^i)\sigma_p^i,$$
+where each $\boldsymbol{c}^p(\sigma_p^i) \in \mathcal{V}$.
 
-Reasoning in components, let $\{\boldsymbol{e}_1, \dots, \boldsymbol{e}_n\}$ be a base
-of a vector space $V$. A vector valued $p$-cochain $\boldsymbol{c}^p$ maps a
-$p$-chain $c_p$ into a vector $\boldsymbol{c}^p(c_p) = \boldsymbol{c}^p_i \boldsymbol{e}_i$.
-Note that $\boldsymbol{c}^p_i$ is a linear map from $p$-chains to scalars, i.e.
-a discrete-valued $p$-cochain! An analogous analysis can be done for
+Reasoning in components, let
+$\{\boldsymbol{e}_1, \dots, \boldsymbol{e}_n\}$ be a base of a vector
+space $V$. A vector valued $p$-cochain $\boldsymbol{c}^p$ maps a
+$p$-chain $c_p$ into a vector
+$\boldsymbol{c}^p(c_p) = \boldsymbol{c}^p_i \boldsymbol{e}_i$. Note that
+$\boldsymbol{c}^p_i$ is a linear map from $p$-chains to scalars, i.e. a
+discrete-valued $p$-cochain! An analogous analysis can be done for
 tensor-valued cochains.
 
 ## Coboundary of a Vector-Valued Cochain
 
 A natural way to define the coboundary of a vector-valued cochain is
 "component-wise", in the sense that if
-$\boldsymbol{c}^p = \sum_i \boldsymbol{c}^p(\sigma^i_p)  \sigma^i_p$ is a vector-valued
-$p$-cochain and $d$ is the usual coboundary operator for scalar-valued
-cochain, then
+$\boldsymbol{c}^p = \sum_i \boldsymbol{c}^p(\sigma^i_p)  \sigma^i_p$ is
+a vector-valued $p$-cochain and $d$ is the usual coboundary operator for
+scalar-valued cochain, then
 $$d \boldsymbol{c}^p := \sum_i \boldsymbol{c}^p(\sigma^i_p) d \sigma^p_i. \label{cobvec}$$
 Geometrically, we are adding up the contributions of basic $p$-cochains
 to obtain a $(p+1)$-cochain. On the contrary, we also want to preserve
@@ -1569,10 +1582,11 @@ the relationship between continuous and discrete world, in the sense
 that vector-valued cochains should be the discrete counterpart of
 vector-valued differential forms.
 
-Berwick-Evans et al [@berwick2021discrete] defined the discrete exterior
-covariant derivative and in the special case of trivial bundles this
-coincides with [\[cobvec\]](#cobvec){reference-type="eqref"
-reference="cobvec"}. Their definition of a discrete $d_\nabla$ is
+Berwick-Evans et al (Berwick-Evans, Hirani, and Schubel 2021) defined
+the discrete exterior covariant derivative and in the special case of
+trivial bundles this coincides with
+[\[cobvec\]](#cobvec){reference-type="eqref" reference="cobvec"}. Their
+definition of a discrete $d_\nabla$ is
 $$\langle d_\nabla \alpha, [0,\dots, k] \rangle_0 := U_{01}\langle \alpha, [1,\dots,k] \rangle_1 + \sum_{i=1}^k (-1)^i \langle \alpha, [0, \dots, \hat{i}, \dots, k] \rangle_0,$$
 
 where the $0$ and $1$ subscripts describe where the vector is
@@ -1610,11 +1624,14 @@ by *interpolation*.
 **Definition 60**. Let $K$ be a simplicial complex. A **primal
 $\mathbf{1}$-interpolation** is a function
 $\mathcal{I}_1: \mathcal{V}_d(K) \cup \mathcal{T}_d(K) \rightarrow \mathcal{V}(K^{(1)}) \cup \mathcal{T}(K^{(1)})$
-such that $$\begin{aligned}
+such that \$\$
+\begin{aligned}
         &\forall \boldsymbol{v}\in \mathcal{V}_d(K) \quad \mathcal{I}_1(\boldsymbol{v}) \in \mathcal{V}(K^{(1)}).\\
         &\forall \boldsymbol{T}\in \mathcal{T}_d(K) \quad  \mathcal{I}_1(\boldsymbol{T}) \in \mathcal{T}(K^{(1)}).
         
-\end{aligned}$$
+\end{aligned}
+
+\$\$
 :::
 ::::
 
@@ -1625,20 +1642,22 @@ An analogous definition can be made for dual interpolations.
 **Definition 61**. Let $K$ be a simplicial complex. A **dual
 $\mathbf{1}$-interpolation** is a function
 $\mathcal{I}^{\star}_1: \mathcal{V}_d(\star K) \cup \mathcal{T}_d(\star K) \rightarrow \mathcal{V}(K_{(1)}) \cup \mathcal{T}(K_{(1)})$
-such that $$\begin{aligned}
+such that \$\$
+\begin{aligned}
     &\forall \boldsymbol{v}\in \mathcal{V}_d(\star K) \quad \mathcal{I}^{\star}_1(\boldsymbol{v}) \in \mathcal{V}(\star K^{(1)}).\\
     &\forall \boldsymbol{T}\in \mathcal{T}_d(\star K) \quad  \mathcal{I}^{\star}_1(\boldsymbol{T}) \in \mathcal{T}(\star K^{(1)}).
     
-\end{aligned}$$
+\end{aligned}
+
+\$\$
 :::
 ::::
 
 ## General Discrete Flat Operator
 
-As we have seen in previous sections, Hirani [@hirani2003discrete]
-defined flat operators through interpolation. We want to organize and
-collect these definitions and extend them to discrete vector and tensor
-fields.
+As we have seen in previous sections, Hirani (Hirani 2003) defined flat
+operators through interpolation. We want to organize and collect these
+definitions and extend them to discrete vector and tensor fields.
 
 In the following, we denote with $\mathcal{T}_d(K)$ and
 $\mathcal{T}_d(\star K)$ respectively the space of discrete primal
@@ -1649,34 +1668,40 @@ tensor fields and discrete dual tensor fields.
 **Definition 62**. The **discrete primal $\mathbf{0}$-flat** operator is
 a map
 $\flat_0: \mathcal{V}_d(K) \cup \mathcal{T}_d(K) \rightarrow \mathcal{C}^0(K, V) \cup \mathcal{C}^0(K, \textsl{Lin})$
-defined as follows $$\begin{aligned}
+defined as follows \$\$
+\begin{aligned}
         &\forall \boldsymbol{v}\in \mathcal{V}_d(K) \quad \flat_0 \boldsymbol{v}:= \sum_i \boldsymbol{v}(\sigma^0_i) \sigma^0_i \in \mathcal{C}^0(K, V).\\
         &\forall \boldsymbol{T}\in \mathcal{T}_d(K) \quad \flat_0 \boldsymbol{T}:=  \sum_i \boldsymbol{T}(\sigma^0_i) \sigma^0_i \in \mathcal{C}^0(K, \textsl{Lin}).
     
-\end{aligned}$$
+\end{aligned}
+
+\$\$
 
 The **discrete dual $\mathbf{0}$-flat** operator is a map
 $\flat^{\star}_0: \mathcal{V}_d(\star K) \cup \mathcal{T}_d( \star K) \rightarrow \mathcal{C}^0(\star K, V) \cup \mathcal{C}^0(\star K, \textsl{Lin})$
-defined as follows $$\begin{aligned}
+defined as follows \$\$
+\begin{aligned}
         &\forall \boldsymbol{v}\in \mathcal{V}_d(\star K) \quad \flat^{\star}_0 \boldsymbol{v}:= \sum_i \boldsymbol{v}(\star \sigma^n_i){\star\sigma^0_i} \in \mathcal{C}^0(\star K, V).\\
         &\forall \boldsymbol{T}\in \mathcal{T}_d(K) \quad \flat^{\star}_0 \boldsymbol{T}:= \sum_i \boldsymbol{T}(\star \sigma^n_i){\star\sigma^n_i} \in \mathcal{C}^0(\star K, \textsl{Lin}).
     
-\end{aligned}$$
+\end{aligned}
+
+\$\$
 :::
 ::::
 
 The $0$-flat operator previously defined is exactly the one described in
-[@boom2022geometric] extended in a straightforward way to discrete
-tensor field. Before defining the discrete $1$-flat operator we have to
-extend the definition of the de Rham map for vector-valued forms.
+(Boom et al. 2022) extended in a straightforward way to discrete tensor
+field. Before defining the discrete $1$-flat operator we have to extend
+the definition of the de Rham map for vector-valued forms.
 
 To do so, we just have to say what is $$\int_{\sigma^p} \omega,$$
 
 for a vector-valued form $\omega$ and a $p$-simplex $\sigma^p$. A
 vector-valued $p$-form in a trivial bundle can be expressed as
-$\omega = \sum_i \boldsymbol{e}_i \otimes \omega^i$ where $\omega^i$ is a
-scalar-valued $p$-form. Hence, since in this case we have a global frame
-we define
+$\omega = \sum_i \boldsymbol{e}_i \otimes \omega^i$ where $\omega^i$ is
+a scalar-valued $p$-form. Hence, since in this case we have a global
+frame we define
 $$\int_{\sigma^p} \omega := \sum_i \int_{\sigma^p} \omega^i \boldsymbol{e}_i.$$
 
 In particular, the de Rham map can be trivially extended, using the same
@@ -1692,39 +1717,42 @@ properly the continuous flat operator).
 ::: Def
 **Definition 63**. The **discrete primal $\mathbf{1}$-flat**
 $\flat_1: \mathcal{V}_d(K) \cup \mathcal{T}_d(K) \rightarrow \mathcal{C}^1(K, \mathbb{R}) \cup \mathcal{C}^1(K, V)$
-is defined as $$\begin{aligned}
+is defined as \$\$
+\begin{aligned}
            &\forall \boldsymbol{v}\in \mathcal{V}_d(K) \quad  \flat_1 \boldsymbol{v}:= \mathcal{R}^1(\mathcal{I}_1(\boldsymbol{v})) \in \mathcal{C}^1(K, \mathbb{R}).\\
            &\forall \boldsymbol{T}\in \mathcal{T}_d(K) \quad \flat_1 \boldsymbol{T}:= \mathcal{R}^1(\mathcal{I}_1(\boldsymbol{T})) \in \mathcal{C}^1(K, \mathcal{V}).
         
-\end{aligned}$$
+\end{aligned}
+
+\$\$
 
 The definitions of the **discrete dual $\mathbf{1}$-flat**
 $\flat^{\star}_1$ is analogous.
 :::
 ::::
 
-The idea of this definition comes from [@hirani2003discrete] and
-[@boom2022geometric], the difference is that we extend this operator to
-discrete tensor fields and that we explicitly separate the contribute of
-interpolation from the process of integration.
+The idea of this definition comes from (Hirani 2003) and (Boom et al.
+2022), the difference is that we extend this operator to discrete tensor
+fields and that we explicitly separate the contribute of interpolation
+from the process of integration.
 
 ::: Ex
 **Example 64**. Let $\boldsymbol{v}\in \mathcal{V}(K)$ and suppose that
 $\mathcal{I}_1$ is the linear $1$-interpolation, i.e.
 $\mathcal{I}_1(\boldsymbol{v})$ is the piecewise linear vector field on
-$K^{(1)}$ which coincides with $\boldsymbol{v}$ in the vertices, we want to
-compute $\flat_1 \boldsymbol{v}$. Let
+$K^{(1)}$ which coincides with $\boldsymbol{v}$ in the vertices, we want
+to compute $\flat_1 \boldsymbol{v}$. Let
 $\sigma^1 \in K^{(1)} = [\sigma^0_0, \sigma^0_1]$ be a $1$-simplex of
 $K$ and suppose that
-$\boldsymbol{v}(\sigma^0_0) = \boldsymbol{v}_0, \boldsymbol{v}(\sigma^0_1) = \boldsymbol{v}_1$. We can
-define a parameterization $F: [0,1] \rightarrow \sigma^1$ as
-$$F(t) := (1-t) \sigma^0_0 + t \sigma^0_1.$$ $\mathcal{I}_1(\boldsymbol{v})$ can
-be written as
+$\boldsymbol{v}(\sigma^0_0) = \boldsymbol{v}_0, \boldsymbol{v}(\sigma^0_1) = \boldsymbol{v}_1$.
+We can define a parameterization $F: [0,1] \rightarrow \sigma^1$ as
+$$F(t) := (1-t) \sigma^0_0 + t \sigma^0_1.$$
+$\mathcal{I}_1(\boldsymbol{v})$ can be written as
 $\mathcal{I}_1(\boldsymbol{v})[x] = a_1(x) \boldsymbol{e}_1 + a_2(x) \boldsymbol{e}_2 + a_3(x) \boldsymbol{e}_3$
 for any $x \in \sigma_1$ and in particular we know that
 $$a_i(x(t)) = (1-t)(\boldsymbol{v}_0)_i + t(\boldsymbol{v}_1)_i. \quad i=1,2,3$$
-Identifying trivially $\mathcal{I}_1(\boldsymbol{v})$ with the $1$-form (named
-with abuse of notation $\mathcal{I}_1(\boldsymbol{v})$)
+Identifying trivially $\mathcal{I}_1(\boldsymbol{v})$ with the $1$-form
+(named with abuse of notation $\mathcal{I}_1(\boldsymbol{v})$)
 $a_1(x) dx^1 + a_2(x) dx^2 + a_3(x) dx^3$, then $$\begin{split}
            \langle \flat_1\boldsymbol{v}, \sigma^1 \rangle &= \int_{\sigma^1} \mathcal{I}_1(\boldsymbol{v})\\
            &= \int_{\sigma_1} a_1(x) dx^1 + a_2(x) dx^2 + a_3(x) dx^3\\
@@ -1744,8 +1772,8 @@ $a_1(x) dx^1 + a_2(x) dx^2 + a_3(x) dx^3$, then $$\begin{split}
 ## Poisson equation
 
 ::: refbox
-**References:** [@crane2018discrete], Section 6.3. [@grady2010discrete],
-Section 2.5.5. [@tonti2013mathematical]
+**References:** (Crane 2018), Section 6.3. (Grady and Polimeni 2010),
+Section 2.5.5. (Tonti 2013)
 :::
 
 In this section we derive the stationary diffusion equation with source
@@ -1761,8 +1789,8 @@ assign an orientation of the primal complex and the dual complex as
 described in Section [2.3.1](#orientationsection){reference-type="ref"
 reference="orientationsection"}. In particular, we orient every primal
 $2$-cell counterclockwise and we find, by applying the algorithm of
-Remark 2.5.1 in [@hirani2003discrete], that also dual $2$-cell are
-oriented counterclockwise.
+Remark 2.5.1 in (Hirani 2003), that also dual $2$-cell are oriented
+counterclockwise.
 
 ![Example of a possible orientation of a small portion of the cell
 complex. Black arrows indicate the orientation of the primal, whereas
@@ -1774,9 +1802,10 @@ species) as a primal (scalar-valued) $0$-cochain denoted by the symbol
 $u$.
 
 <figure id="fig:example">
-
-<figcaption>A portion of the simplicial cell complex (left) and its dual
-<em>circumcentric</em> complex (right).</figcaption>
+<figcaption>
+A portion of the simplicial cell complex (left) and its dual
+`<em>`{=html}circumcentric`</em>`{=html} complex (right).
+</figcaption>
 </figure>
 
 Applying the coboundary operator $d_0$ we get a primal scalar-valued
@@ -1789,8 +1818,8 @@ $\star_1 d_0 u$. Then, using a linear and isotropic constitutive
 equation to relate the diffusive flux $h$ to $\star_1 \, d_0 u$, we
 write $$h = - k \star_1 d_0 u,$$ where $k$ is a material parameter
 (conductivity/diffusivity). Since the dual $2$-cells are oriented
-counterclockwise, following [@tonti2013mathematical] the positive
-orientation for $h$ describes the flux *leaving* any dual $2$-cell.
+counterclockwise, following (Tonti 2013) the positive orientation for
+$h$ describes the flux *leaving* any dual $2$-cell.
 
 ![The flux through the boundary of the simplex is outwards if the
 coefficients of the $2$-cochain are positive (same orientation as the
@@ -1813,8 +1842,8 @@ operator (we again write $\star$ both for primal to dual map and dual to
 primal map) to [\[withoutlap\]](#withoutlap){reference-type="eqref"
 reference="withoutlap"} we get $$-k \Delta u + \Tilde{f} = 0,$$ where
 $\Tilde{f} := \star f$. Since the Laplacian acting on fields $\nabla^2$
-is minus the Laplacian on forms (see [@frankel2011geometry]), the last
-equation is the discrete analogous of the Poisson equation
+is minus the Laplacian on forms (see (Frankel 2011)), the last equation
+is the discrete analogous of the Poisson equation
 $k\nabla ^ 2 u + \Tilde{f} = 0$.
 
 ### Variational formulation
@@ -1829,8 +1858,8 @@ formed by the tangent to the axis of the rod and the horizontal
 direction at the dimensionless arc-length $\sigma := s/L$. For a
 constant cross-section rod subject to a vertical end-load at the right
 end and clamped at the left end, the boundary-value problem for the
-(dimensionless) continuous Euler's Elastica equation reads
-[@audoly2000elasticity] $$\begin{aligned}
+(dimensionless) continuous Euler's Elastica equation reads (Audoly and
+Pomeau 2018) $$\begin{aligned}
         \frac{\textrm{d}^2 u}{\textrm{d}\sigma^2} + f \cos u = 0  \quad \text{in } [0,1], \quad u(0) = 0, \quad \frac{\textrm{d}u}{\textrm{d}\sigma}(1) = 0. \label{contElastica}
 \end{aligned}$$ In
  [\[contElastica\]](#contElastica){reference-type="eqref"
@@ -1902,10 +1931,11 @@ direction.
 
 From now on, we consider a $2$-simplicial complex $K$. Let
 $\{\hat{\boldsymbol{e}}_i\}_i$ be the Cartesian coordinate framework,
-$\{{\boldsymbol{e}}_i\}_i$ be the reference local basis of a given $2$-simplex
-and $\{{\boldsymbol{e}'}_i\}_i$ be the local basis of the deformed $2$-simplex.
-The contravariant bases are indicated with upper indexing. Denoting with
-$\boldsymbol{F}$ the deformation gradient of a given $2$-simplex we have
+$\{{\boldsymbol{e}}_i\}_i$ be the reference local basis of a given
+$2$-simplex and $\{{\boldsymbol{e}'}_i\}_i$ be the local basis of the
+deformed $2$-simplex. The contravariant bases are indicated with upper
+indexing. Denoting with $\boldsymbol{F}$ the deformation gradient of a
+given $2$-simplex we have
 $$\boldsymbol{F} = {\boldsymbol{e}'}_i \otimes {\boldsymbol{e}}^i.$$
 
 Indeed, for any $k$ we have
@@ -1913,8 +1943,10 @@ $$\boldsymbol{F} \boldsymbol{e}_k = ({\boldsymbol{e}'}_i \otimes {\boldsymbol{e}
 
 Now recall that
 $${\boldsymbol{e}'}_i = ({\boldsymbol{e}'}_i)_j \hat{\boldsymbol{e}}_j, \quad {\boldsymbol{e}}_k = ({\boldsymbol{e}'}_k)_l \hat{\boldsymbol{e}}_l, \quad \boldsymbol{e}^i = \boldsymbol{g}^{ik}_R \boldsymbol{e}_k,$$
-where $\boldsymbol{g}^{ik}_R := \boldsymbol{e}^i \cdot \boldsymbol{e}^k$. Putting everything
-together in [\[eq:defgrad\]](#eq:defgrad){reference-type="eqref"
+where
+$\boldsymbol{g}^{ik}_R := \boldsymbol{e}^i \cdot \boldsymbol{e}^k$.
+Putting everything together in
+[\[eq:defgrad\]](#eq:defgrad){reference-type="eqref"
 reference="eq:defgrad"} we get
 $$\boldsymbol{F} = ({\boldsymbol{e}'}_i)_j \hat{\boldsymbol{e}}_j \otimes \boldsymbol{g}^{ik}_R ({\boldsymbol{e}'}_k)_l \hat{\boldsymbol{e}}_l = ({\boldsymbol{e}'}_i)_j \boldsymbol{g}^{ik}_R ({\boldsymbol{e}'}_k)_l \hat{\boldsymbol{e}}_j \otimes \hat{\boldsymbol{e}}_l.$$
 
@@ -1922,7 +1954,8 @@ In particular, in matrix notation we have
 $$\sf{F} = (\sf{A}')^T \sf{g}_R\sf{A},$$
 
 where $\sf{A}$ (resp. $\sf{A}'$) is the matrix where the $i$-th rows is
-the $i$-th basis vector ${\boldsymbol{e}}_i$ (resp. ${\boldsymbol{e}'}_i$).
+the $i$-th basis vector ${\boldsymbol{e}}_i$ (resp.
+${\boldsymbol{e}'}_i$).
 
 ## Burgers' equation
 
@@ -1950,7 +1983,7 @@ $$U^{n+1}_i = U^n_i - h_t (\star dF^n)_i.$$
 
 The choice of the numerical flux function leads to different numerical
 scheme. For the viscid Burgers' equation, we use the *parabolic scheme*,
-i.e. $$F^n := \star \flat_{\text{par}}(-u^2/2) + \nu \star d u,$$
+i.e. $$F^n := \star \flat_{\text{par}}(-u^2/2) + \nu \star d u,$$
 
 where $\flat_{\text{par}} = \mathcal{R}^{\star 0}(I_{\text{par}})$ and
 $I_{\text{par}}(u)$ is the interpolation of $u$ through the $0$-Whitney
@@ -1977,10 +2010,111 @@ $$\hat{u}_{\hat{t}} = - \hat{u}\hat{u}_{\hat{x}} + \hat{\nu} \hat{u}_{\hat{x}\ha
 
 where $\hat{\nu} := \nu/{LU}$.
 
+# References
+
+::::::::::::::::::::: {#refs .references .csl-bib-body .hanging-indent entry-spacing="0"}
+::: {#ref-audoly2000elasticity .csl-entry}
+Audoly, Basile, and Yves Pomeau. 2018. *Elasticity and Geometry*. Oxford
+University Press.
+:::
+
+::: {#ref-berwick2021discrete .csl-entry}
+Berwick-Evans, Daniel, Anil N Hirani, and Mark D Schubel. 2021.
+"Discrete Vector Bundles with Connection and the Bianchi Identity."
+*arXiv Preprint arXiv:2104.10277*.
+:::
+
+::: {#ref-boom2022geometric .csl-entry}
+Boom, Pieter D, Odysseas Kosmas, Lee Margetts, and Andrey P Jivkov.
+2022. "A Geometric Formulation of Linear Elasticity Based on Discrete
+Exterior Calculus." *International Journal of Solids and Structures*
+236: 111345.
+:::
+
+::: {#ref-crane2018discrete .csl-entry}
+Crane, Keenan. 2018. "Discrete Differential Geometry: An Applied
+Introduction." *Notices of the AMS, Communication*, 1153--59.
+:::
+
+::: {#ref-darling1994differential .csl-entry}
+Darling, Richard WR. 1994. *Differential Forms and Connections*.
+Cambridge University Press.
+:::
+
+::: {#ref-de2016subdivision .csl-entry}
+De Goes, Fernando, Mathieu Desbrun, Mark Meyer, and Tony DeRose. 2016.
+"Subdivision Exterior Calculus for Geometry Processing." *ACM
+Transactions on Graphics (TOG)* 35 (4): 1--11.
+:::
+
+::: {#ref-desbrun2005discrete .csl-entry}
+Desbrun, Mathieu, Anil N Hirani, Melvin Leok, and Jerrold E Marsden.
+2005. "Discrete Exterior Calculus." *arXiv Preprint Math/0508341*.
+:::
+
+::: {#ref-epstein2010geometrical .csl-entry}
+Epstein, Marcelo. 2010. *The Geometrical Language of Continuum
+Mechanics*. Cambridge University Press.
+:::
+
+::: {#ref-flanders1963differential .csl-entry}
+Flanders, Harley. 1963. *Differential Forms with Applications to the
+Physical Sciences*. Vol. 11. Courier Corporation.
+:::
+
+::: {#ref-frankel2011geometry .csl-entry}
+Frankel, Theodore. 2011. *The Geometry of Physics: An Introduction*.
+Cambridge university press.
+:::
+
+::: {#ref-grady2010discrete .csl-entry}
+Grady, Leo J, and Jonathan R Polimeni. 2010. *Discrete Calculus: Applied
+Analysis on Graphs for Computational Science*. Vol. 3. Springer.
+:::
+
+::: {#ref-grinspun2006discrete .csl-entry}
+Grinspun, Eitan, Mathieu Desbrun, Konrad Polthier, Peter Schröder, and
+Ari Stern. 2006. "Discrete Differential Geometry: An Applied
+Introduction." *ACM Siggraph Course* 7 (1).
+:::
+
+::: {#ref-hirani2003discrete .csl-entry}
+Hirani, Anil Nirmal. 2003. *Discrete Exterior Calculus*. California
+Institute of Technology.
+:::
+
+::: {#ref-lohi2021whitney .csl-entry}
+Lohi, Jonni, and Lauri Kettunen. 2021. "Whitney Forms and Their
+Extensions." *Journal of Computational and Applied Mathematics* 393:
+113520.
+:::
+
+::: {#ref-milicchio2008codimension .csl-entry}
+Milicchio, Franco, Antonio DiCarlo, Alberto Paoluzzi, and Vadim Shapiro.
+2008. "A Codimension-Zero Approach to Discretizing and Solving Field
+Problems." *Advanced Engineering Informatics* 22 (2): 172--85.
+:::
+
+::: {#ref-munkres2018elements .csl-entry}
+Munkres, James R. 2018. *Elements of Algebraic Topology*. CRC press.
+:::
+
+::: {#ref-schulz2020convergence .csl-entry}
+Schulz, Erick, and Gantumur Tsogtgerel. 2020. "Convergence of Discrete
+Exterior Calculus Approximations for Poisson Problems." *Discrete &
+Computational Geometry* 63: 346--76.
+:::
+
+::: {#ref-tonti2013mathematical .csl-entry}
+Tonti, Enzo. 2013. *The Mathematical Structure of Classical and
+Relativistic Physics*. Vol. 10. Springer.
+:::
+:::::::::::::::::::::
+
 [^1]: Although it may seem a formal definition, it is not. For a formal
-    statement, see Section 4.6 of [@epstein2010geometrical]
+    statement, see Section 4.6 of (Epstein 2010)
 
 [^2]: Note the relation with Generalized Stokes Theorem!
 
-[^3]: To motivate this choice, see for example Section 4.8.4 of
-    [@crane2018discrete].
+[^3]: To motivate this choice, see for example Section 4.8.4 of (Crane
+    2018).
