@@ -397,7 +397,7 @@ def sym(c: Cochain) -> Cochain:
     return scalar_mul(add(c, transpose(c)), 0.5)
 
 
-def convolution(c: Cochain, kernel: Cochain, kernel_window: int) -> Cochain:
+def convolution(c: Cochain, kernel: Cochain, kernel_window: float) -> Cochain:
     """ Compute the convolution between two scalar 0-cochains.
 
     Args:
@@ -408,29 +408,36 @@ def convolution(c: Cochain, kernel: Cochain, kernel_window: int) -> Cochain:
     Returns:
         the convolution rho*kernel.
     """
+    # we build a kernel matrix K by rolling the kernel vector k + 1 times, where
+    # k is the kernel window.
+    # For example if kernel = [1,2,0,0] and kernel_window = 2, then
+    # K = [[1,2,0,0],
+    #      [0,1,2,0],
+    #      [0,0,1,2]].
+    # In this way we can express the
+    # convolution between c and k as K @Sc_coeffs where S is the hodge star
     n = len(c.coeffs)
-    signal = jnp.ravel(star(c).coeffs)[None, None, :]  # Shape [N, C, L]
-    kernel_vals = jnp.ravel(kernel.coeffs)[:kernel_window]
-    kernel_vals = kernel_vals[None, None, :]  # Shape [C_out, C_in, K]
+    K = jnp.zeros((n, n), dtype=dt.float_dtype)
 
-    # Pad input to simulate "full" convolution (K - 1 zeros on the right)
-    pad_right = kernel_window - 1
-    padded_signal = jnp.pad(signal, ((0, 0), (0, 0), (0, pad_right)))
+    # for simplicity, we roll the kernel coeffs n=len(kernel) times and
+    # this is a trick to do so
+    buffer = jnp.empty((n, n*2 - 1))
+    buffer = buffer.at[:, :n].set(kernel.coeffs[:n].T)
+    buffer = buffer.at[:, n:].set(kernel.coeffs[:n-1].T)
 
-    # Perform 1D convolution without flipping kernel
-    conv_result = lax.conv_general_dilated(
-        lhs=padded_signal,
-        rhs=kernel_vals,
-        window_strides=(1,),
-        padding="VALID",
-        dimension_numbers=("NCH", "OIH", "NCH")
-    )
+    rolled = buffer.reshape(-1)[n-1:-1].reshape(n, -1)
 
-    # Reshape to match input length
-    conv_flat = jnp.ravel(conv_result)
-    padded_result = jnp.pad(conv_flat, (0, signal.shape[-1] - conv_flat.shape[0]))
-    padded_result = padded_result.at[n-kernel_window+1:].set(0.)
-    return Cochain(c.dim, c.is_primal, c.complex, padded_result[:, None])
+    K_full_roll = jnp.roll(rolled[:, :n], shift=1, axis=0)
+    # since we want to roll only k+1 times, we extract the correct portion
+    # of the matrix
+    K_non_zero = K_full_roll[:n - kernel_window + 1]
+    K = K.at[:n - kernel_window + 1, :].set(K_non_zero)
+
+    # apply hodge star to compute star c
+    star_c = star(c)
+
+    conv = Cochain(c.dim, c.is_primal, c.complex, K@star_c.coeffs)
+    return conv
 
 
 def abs(c: Cochain) -> Cochain:
