@@ -8,7 +8,8 @@ import jax.numpy as jnp
 from typeguard import check_type
 import warnings
 from enum import Enum
-from jax import lax
+from jax.experimental.sparse import BCOO
+
 
 # suppress all warnings
 warnings.filterwarnings("ignore")
@@ -397,47 +398,53 @@ def sym(c: Cochain) -> Cochain:
     return scalar_mul(add(c, transpose(c)), 0.5)
 
 
-def convolution(c: Cochain, kernel: Cochain, kernel_window: float) -> Cochain:
-    """ Compute the convolution between two scalar 0-cochains.
+def build_sparse_conv_matrix(kernel: jnp.ndarray, n: int, kernel_window: int) -> BCOO:
+    """
+    Builds a sparse convolution matrix (valid mode) using JAX, without loops.
+    """
+    k = kernel_window
+    out_dim = n - k + 1
+
+    # Flatten kernel to ensure it's 1D
+    kernel_flat = kernel[:k].reshape(-1)
+
+    row_idx = jnp.repeat(jnp.arange(out_dim), k)
+    col_idx = jnp.tile(jnp.arange(k), out_dim) + row_idx
+    data = jnp.tile(kernel_flat, out_dim)
+
+    coords = jnp.stack([row_idx, col_idx], axis=1)
+
+    return BCOO((data, coords), shape=(out_dim, n))
+
+
+def convolution(c: Cochain, kernel: Cochain, kernel_window: int) -> Cochain:
+    """
+    Compute the convolution between two scalar 0-cochains using a sparse convolution matrix.
 
     Args:
         c: a scalar 0-cochain.
         kernel: the scalar 0-cochain kernel.
-        kernel_window: the kernel window.
+        kernel_window: the kernel window size.
 
     Returns:
-        the convolution rho*kernel.
+        The convolution result as a Cochain.
     """
-    # we build a kernel matrix K by rolling the kernel vector k + 1 times, where
-    # k is the kernel window.
-    # For example if kernel = [1,2,0,0] and kernel_window = 2, then
-    # K = [[1,2,0,0],
-    #      [0,1,2,0],
-    #      [0,0,1,2]].
-    # In this way we can express the
-    # convolution between c and k as K @Sc_coeffs where S is the hodge star
     n = len(c.coeffs)
-    K = jnp.zeros((n, n), dtype=dt.float_dtype)
 
-    # for simplicity, we roll the kernel coeffs n=len(kernel) times and
-    # this is a trick to do so
-    buffer = jnp.empty((n, n*2 - 1))
-    buffer = buffer.at[:, :n].set(kernel.coeffs[:n].T)
-    buffer = buffer.at[:, n:].set(kernel.coeffs[:n-1].T)
-
-    rolled = buffer.reshape(-1)[n-1:-1].reshape(n, -1)
-
-    K_full_roll = jnp.roll(rolled[:, :n], shift=1, axis=0)
-    # since we want to roll only k+1 times, we extract the correct portion
-    # of the matrix
-    K_non_zero = K_full_roll[:n - kernel_window + 1]
-    K = K.at[:n - kernel_window + 1, :].set(K_non_zero)
-
-    # apply hodge star to compute star c
+    # Apply Hodge star to c
     star_c = star(c)
 
-    conv = Cochain(c.dim, c.is_primal, c.complex, K@star_c.coeffs)
-    return conv
+    # Build sparse convolution matrix
+    K_sparse = build_sparse_conv_matrix(kernel.coeffs, n, kernel_window)
+
+    # Sparse matrix-vector product
+    conv_coeffs_non_zero = K_sparse @ star_c.coeffs
+
+    # Append kernel_window - 1 zeros to the end (to be fixed with BC)
+    conv_coeffs = jnp.pad(conv_coeffs_non_zero.flatten(), (0, kernel_window - 1))
+
+    # Return new cochain with updated coefficients
+    return Cochain(c.dim, c.is_primal, c.complex, conv_coeffs)
 
 
 def abs(c: Cochain) -> Cochain:
