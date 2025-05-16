@@ -8,6 +8,7 @@ import jax.numpy as jnp
 from typeguard import check_type
 import warnings
 from enum import Enum
+from jax import lax
 
 # suppress all warnings
 warnings.filterwarnings("ignore")
@@ -396,7 +397,7 @@ def sym(c: Cochain) -> Cochain:
     return scalar_mul(add(c, transpose(c)), 0.5)
 
 
-def convolution(c: Cochain, kernel: Cochain, kernel_window: float) -> Cochain:
+def convolution(c: Cochain, kernel: Cochain, kernel_window: int) -> Cochain:
     """ Compute the convolution between two scalar 0-cochains.
 
     Args:
@@ -407,23 +408,29 @@ def convolution(c: Cochain, kernel: Cochain, kernel_window: float) -> Cochain:
     Returns:
         the convolution rho*kernel.
     """
-    # FIXME: add the docs
     n = len(c.coeffs)
-    star_c_coeffs_flatten = star(c).coeffs.flatten()
-    # Extract the active part of the kernel
-    kernel_non_zero = kernel.coeffs[:kernel_window]
+    signal = jnp.ravel(star(c).coeffs)[None, None, :]  # Shape [N, C, L]
+    kernel_vals = jnp.ravel(kernel.coeffs)[:kernel_window]
+    kernel_vals = kernel_vals[None, None, :]  # Shape [C_out, C_in, K]
 
-    # Compute the convolution using JAX's convolution function
-    # NOTE: we reverse the kernel ([::-1]) as required by the convolution def.
-    # "valid" mode means only return output where signals overlap completely
-    conv_non_zero_coeffs = jnp.convolve(
-        star_c_coeffs_flatten, kernel_non_zero.flatten()[::-1], mode="valid")
+    # Pad input to simulate "full" convolution (K - 1 zeros on the right)
+    pad_right = kernel_window - 1
+    padded_signal = jnp.pad(signal, ((0, 0), (0, 0), (0, pad_right)))
 
-    conv_coeffs = jnp.zeros_like(star_c_coeffs_flatten)
-    # NOTE: last values should be fixed by BCs
-    conv_coeffs = conv_coeffs.at[:n - kernel_window + 1].set(conv_non_zero_coeffs)
-    conv = Cochain(c.dim, c.is_primal, c.complex, conv_coeffs)
-    return conv
+    # Perform 1D convolution without flipping kernel
+    conv_result = lax.conv_general_dilated(
+        lhs=padded_signal,
+        rhs=kernel_vals,
+        window_strides=(1,),
+        padding="VALID",
+        dimension_numbers=("NCH", "OIH", "NCH")
+    )
+
+    # Reshape to match input length
+    conv_flat = jnp.ravel(conv_result)
+    padded_result = jnp.pad(conv_flat, (0, signal.shape[-1] - conv_flat.shape[0]))
+    padded_result = padded_result.at[n-kernel_window+1:].set(0.)
+    return Cochain(c.dim, c.is_primal, c.complex, padded_result[:, None])
 
 
 def abs(c: Cochain) -> Cochain:
