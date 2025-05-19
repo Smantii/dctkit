@@ -1,14 +1,13 @@
 import dctkit as dt
 
 from dctkit.mesh import simplex as spx
-from dctkit.math import spmm
+from dctkit.math import spmm, conv
 import numpy.typing as npt
 from jax import Array
 import jax.numpy as jnp
 from typeguard import check_type
 import warnings
 from enum import Enum
-from jax.experimental.sparse import BCOO
 
 
 # suppress all warnings
@@ -398,28 +397,9 @@ def sym(c: Cochain) -> Cochain:
     return scalar_mul(add(c, transpose(c)), 0.5)
 
 
-def build_sparse_conv_matrix(kernel: jnp.ndarray, n: int, kernel_window: int) -> BCOO:
-    """
-    Builds a sparse convolution matrix (valid mode) using JAX, without loops.
-    """
-    k = kernel_window
-    out_dim = n - k + 1
-
-    # Flatten kernel to ensure it's 1D
-    kernel_flat = kernel[:k].reshape(-1)
-
-    row_idx = jnp.repeat(jnp.arange(out_dim), k)
-    col_idx = jnp.tile(jnp.arange(k), out_dim) + row_idx
-    data = jnp.tile(kernel_flat, out_dim)
-
-    coords = jnp.stack([row_idx, col_idx], axis=1)
-
-    return BCOO((data, coords), shape=(out_dim, n))
-
-
 def convolution(c: Cochain, kernel: Cochain, kernel_window: int) -> Cochain:
     """
-    Compute the convolution between two scalar 0-cochains using a sparse convolution matrix.
+    Compute the convolution between two scalar 0-cochains.
 
     Args:
         c: a scalar 0-cochain.
@@ -429,13 +409,11 @@ def convolution(c: Cochain, kernel: Cochain, kernel_window: int) -> Cochain:
     Returns:
         The convolution result as a Cochain.
     """
-    n = len(c.coeffs)
-
     # Apply Hodge star to c
     star_c = star(c)
 
     # Build sparse convolution matrix
-    K_sparse = build_sparse_conv_matrix(kernel.coeffs, n, kernel_window)
+    K_sparse = conv.build_sparse_conv_matrix(kernel.coeffs, kernel_window)
 
     # Sparse matrix-vector product
     conv_coeffs_non_zero = K_sparse @ star_c.coeffs
